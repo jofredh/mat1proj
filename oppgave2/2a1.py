@@ -11,5 +11,5 @@ def f(x):
 x=np.linspace(rangemin,rangemax,1000)
 y=f(x)
 plt.grid(True)
-plt.plot(x,y)
+plt.plot(x,y,'g-')
 plt.show()
