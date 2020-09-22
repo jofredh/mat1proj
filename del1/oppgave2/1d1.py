@@ -20,20 +20,21 @@ def F(x):
 
 
 for x in np.arange(0,0.001,0.000001):
-    Ex = abs(f(x0)-g(x))
+    Ex = abs(f(x0)-g(x)) if abs(f(x0)-g(x))<=0.001 else abs(f(x0)-g(x-0.000001))
     if(Ex<=0.001):
         print("F:{0}, G:{1}, f:{2}, E:{3}, x:{4}".format(F(x0+x),g(x),f(x0),Ex,x))
     elif(Ex>0.001):
         break
 
-
+print(Ex)
 fig = plt.gcf()
 fig.canvas.set_window_title('Funksjon 1: 7x² - 8x + 1')
 x=np.linspace(min,max,1000)
 y=F(x)
 yd=f(x)
 yg=G(x)
-ye=abs(f(x0)-g(x))
+ye=[]
+ye=np.array(np.full(1000,Ex))
 plt.grid(True)
 plt.plot(x,yd,'r-', label='f \'(x)')
 plt.plot(x,y,'g-',label="f (x)")

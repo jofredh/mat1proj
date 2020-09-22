@@ -30,7 +30,7 @@ def newtonRaphson(x0,e,N):
         condition= abs(f(x1)) > e
 
     if flag == 1:
-        print('\nDet ene nullpunktet er i: %0.8f' % x1)
+        print('\nDet ene nullpunktet er i: %0.12f' % x1)
     else:
         print("\nIkke konvergent.")
 
