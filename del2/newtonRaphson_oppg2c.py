@@ -34,7 +34,7 @@ def newtonRaphson(x0,e,N):
     condition = True
 
     while condition:
-        if(g(x0) == 0.0):
+        if(g(x0) == 0.0): # Hvis startverdien vi skriver inn gjør den deriverte lik 0 stopper koden, kan ikke dele på 0
             print("kan ikke dele på 0")
             break
         
