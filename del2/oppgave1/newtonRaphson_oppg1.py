@@ -44,7 +44,7 @@ def newtonRaphson(x0,e,N):
 
 x0 = input("Start verdi: ")
 e = 10**(-12)
-N = input("Max iterasjoner: ")
+N = 10000000000000000
 
 x0 = float(x0)
 e = float(e)
