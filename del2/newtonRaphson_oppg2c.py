@@ -12,7 +12,7 @@ import math
 
 x0 = input("Startverdi: ")
 e = 10**(-12)
-N = 10000000000000000
+N = 100
 
 x0 = float(x0)
 e = float(e)
