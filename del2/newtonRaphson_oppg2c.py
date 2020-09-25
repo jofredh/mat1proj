@@ -5,7 +5,6 @@ maksimalt skal gjenta seg, før den sier at det ikke konvergerer.
 Hvis start verdien er nærme nok til at det kommer innenfor feilmarginen
 før antall iterasjoner er nådd vil den si hvor nullpunktet er.
 '''
-# HUSK AT DETTE GJELDER FOR BEGGE NULLPUNKTENE +2*PI*K
 
 import numpy as np
 import matplotlib.pyplot as plt
