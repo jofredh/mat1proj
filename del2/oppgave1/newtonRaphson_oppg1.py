@@ -1,8 +1,8 @@
 '''
-Denne koden tregner 2 input fra brukeren. Den trenger en start verdi på hvor
+Denne koden tregner 2 input fra brukeren. Den trenger en startverdi på hvor
 man tror det ene nullpunktet er. Og det trenger en mengde iterasjoner den
 maksimalt skal gjenta seg, før den sier at det ikke konvergerer.
-Hvis start verdien er nærme nok til at det kommer innenfor feilmarginen
+Hvis startverdien er nærme nok til at det kommer innenfor feilmarginen
 før antall iterasjoner er nådd vil den si hvor nullpunktet er.
 '''
 
@@ -22,7 +22,7 @@ def newtonRaphson(x0,e,N):
     condition = True
 
     while condition:
-        if(g(x0) == 0.0): # Hvis start verdien vi skriver inn gjør den deriverte lik 0 stopper koden, kan ikke dele på 0
+        if(g(x0) == 0.0): # Hvis startverdien vi skriver inn gjør den deriverte lik 0 stopper koden, kan ikke dele på 0
             print("kan ikke dele på 0")
             break
         
@@ -42,7 +42,7 @@ def newtonRaphson(x0,e,N):
     else:
         print("\nIkke konvergent.")
 
-x0 = input("Start verdi: ")
+x0 = input("Startverdi: ")
 e = 10**(-12)
 N = 10000000000000000
 

@@ -1,8 +1,8 @@
 '''
-Denne koden tregner 2 input fra brukeren. Den trenger en start verdi på hvor
+Denne koden tregner 2 input fra brukeren. Den trenger en startverdi på hvor
 man tror det ene nullpunktet er som da er . Og det trenger en mengde iterasjoner den
 maksimalt skal gjenta seg, før den sier at det ikke konvergerer.
-Hvis start verdien er nærme nok til at det kommer innenfor feilmarginen
+Hvis startverdien er nærme nok til at det kommer innenfor feilmarginen
 før antall iterasjoner er nådd vil den si hvor nullpunktet er.
 '''
 
@@ -10,9 +10,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import math
 
-x0 = input("Start verdi: ")
+x0 = input("Startverdi: ")
 e = 10**(-12)
-N = 1000000000000
+N = 10000000000000000
 
 x0 = float(x0)
 e = float(e)
