@@ -1,22 +1,27 @@
 '''
-Denne koden tregner 2 input fra brukeren. Den trenger en startverdi på hvor
+Denne koden tregner 1 input fra brukeren. Den trenger en startverdi på hvor
 man tror det ene nullpunktet er. Og det trenger en mengde iterasjoner den
 maksimalt skal gjenta seg, før den sier at det ikke konvergerer.
 Hvis startverdien er nærme nok til at det kommer innenfor feilmarginen
 før antall iterasjoner er nådd vil den si hvor nullpunktet er.
+
+Hvis man ikke skulle komme frem til nullpunktet innen antallet iterasjoner jeg har lagt inn i koden
+kan man i praksis øke dette tallet, men man har generelt valgt en dårlig start verdi om den skulle trenge
+flere itersajoner...
 '''
 
 import numpy as np
 import matplotlib.pyplot as plt
 import math
 
-x0 = input("Startverdi: ")
-e = 10**(-12)
-N = 100
+x0 = input("Startverdi: ") #Startverdi
+e = 10**(-12) #Max tillatte feilen
+N = 100 #Max antall iterasjoner
 
 x0 = float(x0)
 e = float(e)
 N = int(N)
+
 x = x0
 cos = math.cos
 sin = math.sin
