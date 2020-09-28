@@ -8,6 +8,12 @@ før antall iterasjoner er nådd vil den si hvor nullpunktet er.
 Hvis man ikke skulle komme frem til nullpunktet innen antallet iterasjoner jeg har lagt inn i koden
 kan man i praksis øke dette tallet, men man har generelt valgt en dårlig start verdi om den skulle trenge
 flere itersajoner...
+
+Gode startverider er typisk verdier som er relativt nærme nullpunkter til grafen. 
+For denne grafen er gode startverdier f.eks.: "0" og "1"
+
+Siden denne grafen er en trigonometrisk funksjon fortsetter den ut i uendelighet, derfor kan vi også plusse på 2*pi*k
+der k er en integer, fordi det er nullpunkter i alle disse verdiene ut i uendeligheten.
 '''
 
 import numpy as np
