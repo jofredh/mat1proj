@@ -17,7 +17,6 @@ def G(x):
 def F(x):
     return np.sin(x)
 
-
 for x in np.arange(0,0.01,0.000001):
     Ex = abs(f(x0)-g(x))
     if(Ex<=0.001):
