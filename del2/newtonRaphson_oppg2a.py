@@ -1,5 +1,5 @@
 '''
-Denne koden tregner 1 input fra brukeren. Den trenger en startverdi på hvor
+Denne koden trenger 1 input fra brukeren. Den trenger en startverdi på hvor
 man tror det ene nullpunktet er som da er . Og det trenger en mengde iterasjoner den
 maksimalt skal gjenta seg, før den sier at det ikke konvergerer.
 Hvis startverdien er nærme nok til at det kommer innenfor feilmarginen
@@ -22,7 +22,7 @@ import math
 
 x0 = input("Startverdi: ") #Startverdi
 e = 10**(-12) #Max tillatte feilen
-N = 100 #Max antall iterasjoner
+N = 100 #Max antall iterasjonerr
 
 x0 = float(x0)
 e = float(e)
