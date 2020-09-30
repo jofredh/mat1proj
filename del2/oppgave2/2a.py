@@ -1,8 +1,6 @@
 '''
 Denne koden trenger 1 input fra brukeren. Den trenger en startverdi på hvor
-man tror det ene nullpunktet er som da er . Og det trenger en mengde iterasjoner den
-maksimalt skal gjenta seg, før den sier at det ikke konvergerer.
-Hvis startverdien er nærme nok til at det kommer innenfor feilmarginen
+man tror det ene nullpunktet er som da er . Hvis startverdien er nærme nok til at det kommer innenfor feilmarginen
 før antall iterasjoner er nådd vil den si hvor nullpunktet er.
 
 Hvis man ikke skulle komme frem til nullpunktet innen antallet iterasjoner jeg har lagt inn i koden
