@@ -8,16 +8,13 @@ kan man i praksis øke dette tallet, men man har generelt valgt en dårlig start
 flere itersajoner...
 '''
 
-import numpy as np
-import matplotlib.pyplot as plt
-
 def f(x):
     return 3*x**2 + 4*x - 4
 
 def g(x):
     return 6*x + 4
 
-def newtonRaphson(x0,e,N):
+def newtonRaphson(x0,e,I):
     print('\nNewton Raphson metoden:')
     step = 1
     flag = 1
@@ -31,13 +28,13 @@ def newtonRaphson(x0,e,N):
         x1 = x0 - f(x0)/g(x0)
         print('Iterasjon-%d, x1 = %0.12f og f(x1) = %0.12f' % (step, x1, f(x1)))
         x0 = x1
-        step= step + 1
+        step = step + 1
 
-        if step > N:
+        if step > I:
             flag = 0
             break
 
-        condition= abs(f(x1)) > e
+        condition = abs(f(x1)) > e
 
     if flag == 1:
         print('\nDet ene nullpunktet er i: %0.12f' % x1)
@@ -46,10 +43,10 @@ def newtonRaphson(x0,e,N):
 
 x0 = input("Startverdi: ") #Startverdi
 e = 10**(-12) #max tillatte feilen
-N = 100 #Max antall iterasjoner
+I = 100 #Max antall iterasjoner
 
 x0 = float(x0)
 e = float(e)
-N = int(N) 
+I = int(I) 
 
-newtonRaphson(x0,e,N)
+newtonRaphson(x0,e,I)

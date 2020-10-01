@@ -14,17 +14,15 @@ Siden denne grafen er en trigonometrisk funksjon fortsetter den ut i uendelighet
 der k er en integer, fordi det er nullpunkter i alle disse verdiene ut i uendeligheten.
 '''
 
-import numpy as np
-import matplotlib.pyplot as plt
 import math
 
 x0 = input("Startverdi: ") #Startverdi
 e = 10**(-12) #Max tillatte feilen
-N = 100 #Max antall iterasjonerr
+I = 100 #Max antall iterasjonerr
 
 x0 = float(x0)
 e = float(e)
-N = int(N)
+I = int(I)
 
 x = x0
 cos = math.cos
@@ -36,7 +34,7 @@ def f(x):
 def g(x):
     return -102*cos(x) + 136*sin(x)
 
-def newtonRaphson(x0,e,N):
+def newtonRaphson(x0,e,I):
     print('\nNewton Raphson metoden:')
     step = 1
     flag = 1
@@ -52,15 +50,15 @@ def newtonRaphson(x0,e,N):
         x0 = x1
         step= step + 1
 
-        if step > N:
+        if step > I:
             flag = 0
             break
 
-        condition= abs(f(x1)) > e
+        condition = abs(f(x1)) > e
 
     if flag == 1:
         print('\nDet ene nullpunktet er i: %0.12f' % x1)
     else:
         print("\nIkke konvergent.")
 
-newtonRaphson(x0,e,N)
+newtonRaphson(x0,e,I)
