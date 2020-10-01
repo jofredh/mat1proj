@@ -12,7 +12,7 @@ def g(dx,x=x0):
     return np.longdouble((F(x+dx)-F(x))/dx)
 
 def G(x):  #To funksjoner for tilnærmingen g fordi dette gjør det enklere å tegne grafen separert fra f'
-    return 0.2+np.longdouble((F(x+0.002825)-F(x))/0.002825)#DeltaX hardkodet inn etter funn i Del1:Oppgave1D
+    return np.longdouble((F(x+0.002825)-F(x))/0.002825)#DeltaX hardkodet inn etter funn i Del1:Oppgave1D
 
 def F(x):
     return np.sin(x)
@@ -28,7 +28,7 @@ for x in np.arange(0,0.01,0.000001):#Loop for å finne største gyldige DeltaX f
 i=0
 E = [0]*1000
 for x in np.linspace(min,max,1000): #Loop for å beregne variasjon i E over et gitt intervall min -> max
-    E[i] = 100*np.longdouble(abs(f(x)-g(x=x,dx=valid)))
+    E[i] = np.longdouble(abs(f(x)-g(x=x,dx=valid)))
     i+=1
 
 fig = plt.gcf()
@@ -41,7 +41,7 @@ ye=E
 plt.grid(True)
 plt.plot(x,yd,'r-', label='f \'(x)')
 plt.plot(x,y,'g-',label="F (x)")
-plt.plot(x,yg,'b-',label="g (x) + 0.2")
-plt.plot(x,ye,color='purple',label='100*E (x) for deltaX %.4f'%(valid))
+plt.plot(x,yg,'b-',label="g (x)")
+plt.plot(x,ye,color='purple',label='E (x) for deltaX %.4f'%(valid))
 plt.legend()    
 plt.show()
