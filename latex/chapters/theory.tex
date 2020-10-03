@@ -1,0 +1,39 @@
+\chapter{Teori }
+
+\section{Del 1: Numerisk tilnærming til den deriverte}
+
+I kapittel 2.2, definisjon nr. 4 i boken \emph{Calculus}, blir den deriverte til en funksjon \emph{f} definert som følgende: 
+\begin{center}
+
+ \[f'(x)=\lim_{x \to h}\frac{f(x+h)-f(x)}{h}\]
+\\For alle verdier av $x$ som er innenfor grenseverdien.
+\end{center}
+Hvis f'(x) eksisterer, så sier vi da at $f$ er deriverbar ved $x$. \cite{Calculus}
+\\
+Hvis funksjonen $g(x) = c$ (konstant), da sier vi at den deriverte funksjonen til $g(x) = 0$.\cite{Calculus}\\
+
+Når det er snakk om det vi kaller definisjonsområdet til en funksjon \emph{f}, og definisjonsområdet til den deriverte av funksjonen \emph{f'}. Så er det da snakk om alle \emph{x}, hvor grafen til \emph{f} har en tangent som ikke er vertikal.\cite{Calculus} \\
+\\
+Når vi så skal finne en tilnærming til \(f'(x_{0})\) så benyttet vi oss av funkjsonen som vi kaller \emph{g(x)}, likningen er som følgene:
+\begin{center}
+    \[f'(x) \approx g(x)=\frac{f(x+ \Delta x)-f(x)}{\Delta x}\]
+\end{center}\\
+\\
+Ved å starte med en mindre $\Delta x$ blir tilnærmingen bedre enn når vi bruker og sier $f'(x) \approx g(x)$. Når vi benytter $f'(x) \approx g(x)$ så oppstår det en liten feil, ettersom dette ikke er et eksakt svar. Denne feilen kan vi skrive som følgende:
+\begin{center}
+    \[E(x)= |f'(x) - \text{ tilnærmert verdi}| = |f'(x)-g(x)|\]
+\end{center}
+
+
+
+
+
+
+\section{Del 2: Newton - Raphson}
+Newton-Raphsons metode lar oss ved hjelp av en rekke gjetninger finne en tilnærming til étt lokalt nullpunkt til en reell deriverbar funksjon.
+\begin{center}
+    Det vil si, en \(x_{s}\) som oppfyller
+    \[f(x_{s})=0\]
+\end{center}
+Ideelt sett vil vi bare velge en \(x_{0}\) og gjette til vi finner \(x_{s}\), dessverre er ikke dette alltid så enkelt. I stedet bruker vi tangentlinjen til \(f\) i punktet \(x_{n}\) og analyserer nullpunktet til denne. \\
+Dersom tangentlinjens skjæringspunkt \(x_{a}\) tilfredsstiller kravet \(|f(x_{a})|<E\) hvor E er en forhåndsdefinert godkjent feilmargin har vi gjort en tilfredsstillende tilnærming for \(x_{s}\)

@@ -1,0 +1,41 @@
+\chapter{Metoder}
+\section{Del 1}
+\subsection{Oppgave 1}\label{met:d1o1}
+I oppgave 1 del 1 har vi regnet ut den deriverte av hver funksjon på papir ved å bruke kjente regler for derivasjon.
+vi har også regnet ut den deriverte av \(x_{0}\), hvor verdien av \(x_{0}\) var gitt i oppgavene. Tilnærmingen av den den deriverte av $x$ er $g(x)$, den finner vi ut ved å bruke likningen  \[\frac{\Delta y}{\Delta x} =\frac{f(x+ \Delta x)-f(x)}{\Delta x} = g(x)\]
+Feilen mellom den eksakt deriverte $f'(x)$ og den tilnærmete deriverte $g(x)$, er $E(x)$. Feilen $E(x)$ uttrykkes med kommende ligning:
+\\
+\[E(x) = |f'(x) - g(x)|\]
+\\
+I vårt tilfelle bruker vi \(x_{0} =  x\). Vi har byttet verdien på $x$ med verdiene som vi ble gitt i oppgavene for hver funksjon.
+\\
+\\
+Underoppgave 1 D) løste vi som en del av python programmet som er mer detaljert beskrevet i \ref{met:d1o2}. Kode vedlagt i \ref{app:d1o1&2}.\\
+En del av dette programmet var dedikert til å finne en $\Delta x$ som tilfredsstilte kravet:\begin{center}\pmb{$0.001\geq{}E(x)=\frac{F(x+\Delta x) - F(x)}{\Delta x}$}\end{center}Dette ble gjort med en løkke som sjekket $\Delta x$ verdier fra 0 og oppover med ekstremt små inkrementer. Hver av de fire versjonene av programmet var her finjustert til å sjekke et mer realistisk intervall for raskere utregning.
+\\
+\subsection{Oppgave 2}\label{met:d1o2}
+Oppgave 2 har blitt løst rent digitalt ved hjelp av fire programmer skrevet i Python med bibliotekene matplotlib og numpy.\\
+Matplotlib er et flott bibliotek for grafing/plotting av funksjoner, med mange muligheter for farger, linjetyper, linje/punktkart osv.\\Numpy er et bibliotek fullt av matematiske og vitenskapelige funksjoner som gjør programmatisk utregning av avansert matematikk mye enklere\\ I alt skrev vi fire programmer til denne oppgaven, ett til hver av funksjonene. Generelt sett er programmene nesten helt like, de eneste variasjonene mellom dem er definisjoner av selve funksjonene, samt argumentene gitt av oppgaven for intervall og $x_{0}$, i tillegg til det nevnt i \ref{met:d1o1}.\\[5mm]
+Python, matplotlib og numpy er alle svært dynamiske verktøy som har gjort denne oppgaven ganske enkel å programmere.\\
+Her definerte vi bare funksjonene F(x), f(x) og g(x), lagde en liste på 1000 tall i det gitte intervallet $min\leq x \leq max$ med fast intervall $\frac{max-min}{1000}$, videre lagde vi tre variabler, Fy, fy og gy, til å holde y-koordinatene tilhørende listen x.\\Python lar oss definere disse listene veldig enkelt med Fy = F(x), hvor dersom x er en liste med 1000 verdier, vil også Fy bli en liste med 1000 verdier. Deretter mates bare listene x og y til matplotlib som plotter og tegner grafene for oss i ønsket stil. 2D ble løst med en egen løkke som itererte over samme liste x, og tilordnet hver utregnede $E(x_{n})$, $n \epsilon \{0,999\}$, til sin egen index i en liste E.\\
+Kode tilhørende oppgaven finnes som vedlegg: \ref{app:d1o1&2}
+
+\section{Del 2}
+\subsection{Oppgave 1}
+I oppgave 1 på del 2 har vi skrevet en kode som gjør Newton-Raphson metoden for oss, slik at alt vi trengte å gjøre var å sette inn en ønsket startverdi. Da vil programmet konvergere mot det nærmeste nullpunktet og stoppe når den kom innenfor den maximale feilen $E = 10^{-12}$. Koden stopper om startverdien vi setter inn gjør slik at den deriverte blir lik 0, fordi man kan ikke dele på 0, og den stopper også om den ikke når en nøyaktig nok verdi før max antall iterasjoner er nådd.
+\\
+\\
+For at koden skal fungere må vi sette inn $f(x)$ og $f'(x)$ i koden, og så vil koden gjøre hele utregningen frem til den treffer ett nullpunkt som tilfredsstiller feilen E. I denne oppgaven får vi $f(x)$ og kan da regne ut $f'(x)$ ved å bruke kjente regler for derivasjon.
+\\
+\\
+Koden til oppgave 1 finner du i Tillegg A.2.1
+
+
+\subsection{Oppgave 2}
+I oppgave 2 på del 2 bruker vi samme koden som vi brukte på oppgave 1, men vi får ikke en funksjon. Vi fikk informasjon om de forskjellige leddene som vi kunne bruke til å utlede likningen $f(\theta_2)$. Når vi utledet en likning og satte inn \(\theta_1\) fikk vi uttrykk som vi kunne derivere, og da kunne vi bare sette inn likningen og den deriverte i den samme koden vi brukte på oppgave 1. Vi brukte programvaren GeoGebra til å utlede likningene og de deriverte til likningene i denne oppgaven. Måten vi utledet likningene på var å sette inn den informasjonen vi fikk i "skriv inn" feltet i GeoGebra som en enhet, og da fikk vi fine uttrykk med én ukjent, som vi lett kunne derivere i samme programmet ved å skrive inn $f'$ i "skriv inn" feltet. 
+\\
+\\
+På oppgave 2 var vi nødt til å ha 3 forskjellige koder med de ulike likningene i, fordi \(\theta_1\) er ikke lik i alle deloppgavene, og vi får da ulike likninger og ulike deriverte. 
+\\
+\\
+Kodene til oppgave 2 finner du i Tillegg A.2.2 - A.2.4

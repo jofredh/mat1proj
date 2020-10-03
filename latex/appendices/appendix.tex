@@ -1,0 +1,478 @@
+\appendix
+
+\chapter{Kode}
+Kodekommentarer kommer ikke frem like tydelig som ønskelig her, den wrappes også videre over til ny side ved flere steder, noe som ødelegger kontinuitet i lesningen. Dette er beklagelig.\\
+Ved ønske om nærmere gransking av koden i mer kode-vennlig medium, se Github.\cite{github}
+\section{Del 1}\label{app:d1o1&2}
+Koden for Oppgave 1D og Oppgave 2 er gjort i samme fil, separert for hver av de fire funksjonene.
+\subsection{Funksjon 1}
+\label{app:func1}
+\begin{lstlisting}
+import numpy as np
+import matplotlib.pyplot as plt 
+
+x0 = 1
+min = 0
+max = 2
+
+def f(x):
+    return (14*x) - 8
+
+def g(dx,x=x0):
+    return np.longdouble((F(x+dx)-F(x))/dx)
+
+def G(x): #To funksjoner for tilnærmingen g fordi dette gjør det enklere å tegne grafen separert fra f'
+    return np.longdouble((F(x+0.00014)-F(x))/0.00014) #DeltaX hardkodet inn etter funn i Del1:Oppgave1D
+
+def F(x):
+    return 7*x**2 -8*x +1
+
+
+for x in np.arange(0,0.001,0.000001): #Loop for å finne største gyldige DeltaX for E<=0.001. Loop grenser og stepsize funnet ved prøv&feil
+    Ex = abs(f(x0)-g(dx=x))
+    if(Ex<=0.001):
+        valid=x
+        #print("F:{0}, G:{1}, f:{2}, E:{3}, x:{4}".format(F(x0+x),g(x),f(x0),Ex,x))#Fjern '#' tegnet foran denne linjen for å kjøre koden med printing av E og deltaX
+    elif(Ex>0.001):
+        break
+
+i=0
+E = [0]*1000
+for x in np.linspace(min,max,1000): #Loop for å beregne variasjon i E over et gitt intervall min -> max
+    E[i] = abs(f(x)-g(x=x,dx=valid))
+    i+=1
+
+
+fig = plt.gcf()
+fig.canvas.set_window_title('Funksjon 1: 7x² - 8x + 1')
+x=np.linspace(min,max,1000)
+y=F(x)
+yd=f(x)
+yg=G(x)
+ye=E
+plt.grid(True)
+plt.plot(x,yd,'r-', label='f \'(x)')
+plt.plot(x,y,'g-',label="F (x)")
+plt.plot(x,yg,'b-',label="g (x)")
+plt.plot(x,ye,color='purple',label='E (x): for deltaX %.5f'%(valid))
+plt.legend()    
+plt.show()
+
+\end{lstlisting}
+\subsection{Funksjon 2}
+\label{app:func2}
+\begin{lstlisting}
+import numpy as np
+import matplotlib.pyplot as plt 
+
+x0 = np.pi/4
+min = 0
+max = 2*np.pi
+
+def f(x):
+    return np.cos(x)
+
+def g(dx,x=x0):
+    return np.longdouble((F(x+dx)-F(x))/dx)
+
+def G(x):  #To funksjoner for tilnærmingen g fordi dette gjør det enklere å tegne grafen separert fra f'
+    return np.longdouble((F(x+0.002825)-F(x))/0.002825)#DeltaX hardkodet inn etter funn i Del1:Oppgave1D
+
+def F(x):
+    return np.sin(x)
+
+for x in np.arange(0,0.01,0.000001):#Loop for å finne største gyldige DeltaX for E<=0.001. Loop grenser og stepsize funnet ved prøv&feil
+    Ex = abs(f(x0)-g(x))
+    if(Ex<=0.001):
+        valid=x
+        #print("F:{0}, G:{1}, f:{2}, E:{3}, x:{4}".format(F(x0+x),g(x),f(x0),Ex,x)) #Fjern '#' tegnet foran denne linjen for å kjøre koden med printing av E og deltaX
+    elif(Ex>0.001):
+        break
+
+i=0
+E = [0]*1000
+for x in np.linspace(min,max,1000): #Loop for å beregne variasjon i E over et gitt intervall min -> max
+    E[i] = np.longdouble(abs(f(x)-g(x=x,dx=valid)))
+    i+=1
+
+fig = plt.gcf()
+fig.canvas.set_window_title('Funksjon 2: sin(x)')
+x=np.array(np.linspace(min,max,1000))
+y=F(x)
+yd=f(x)
+yg=G(x)
+ye=E
+plt.grid(True)
+plt.plot(x,yd,'r-', label='f \'(x)')
+plt.plot(x,y,'g-',label="F (x)")
+plt.plot(x,yg,'b-',label="g (x)")
+plt.plot(x,ye,color='purple',label='E (x) for deltaX %.4f'%(valid))
+plt.legend()    
+plt.show()
+\end{lstlisting}
+\subsection{Funksjon 3}
+\label{app:func3}
+\begin{lstlisting}
+import numpy as np
+import matplotlib.pyplot as plt 
+
+x0 = 1
+min = -2
+max = 2
+
+def f(x):
+    return (x-5)/(x+3)**3
+
+def g(dx,x=x0):
+    return np.longdouble((F(x+dx)-F(x))/dx)
+
+def G(x):  #To funksjoner for tilnærmingen g fordi dette gjør det enklere å tegne grafen separert fra f'
+    return np.longdouble((F(x+0.32389)-F(x))/0.32389)#DeltaX hardkodet inn etter funn i Del1:Oppgave1D
+
+def F(x):
+    return (1-x)/((x+3)**2)
+
+
+for x in np.arange(0.032,0.1,0.000001):#Loop for å finne største gyldige DeltaX for E<=0.001. Loop grenser og stepsize funnet ved prøv&feil
+    Ex = abs(f(x0)-g(x))
+    if(Ex<=0.001):
+        valid=x
+        #print("F:{0}, G:{1}, f:{2}, E:{3}, x:{4}".format(F(x0+x),g(x),f(x0),Ex,x))#Fjern '#' tegnet foran denne linjen for å kjøre koden med printing av E og deltaX
+    elif(Ex>0.001):
+        break
+
+i=0
+E = [0]*1000
+for x in np.linspace(min,max,1000): #Loop for å beregne variasjon i E over et gitt intervall min -> max
+    E[i] = np.longdouble(abs(f(x)-g(x=x,dx=valid)))
+    i+=1
+
+fig = plt.gcf()
+fig.canvas.set_window_title('Funksjon 3: (1-x)/(x+3)²')
+x=np.linspace(min,max,1000)
+y=F(x)
+yd=f(x)
+yg=G(x)
+ye=E
+plt.grid(True)
+plt.plot(x,yd,'r-', label='f \'(x)')
+plt.plot(x,y,'g-',label="F (x)")
+plt.plot(x,yg,'b-',label="g (x)")
+plt.plot(x,ye,color='purple',label='E (x) for deltaX %.3f'%(valid))
+plt.legend()    
+plt.show()
+\end{lstlisting}
+\subsection{Funksjon 4}
+\label{app:func4}
+\begin{lstlisting}
+import numpy as np
+import matplotlib.pyplot as plt 
+
+x0 = 5
+min = 0
+max = 10
+
+def f(x):
+    return x/np.sqrt(1+x**2)
+
+def g(dx,x=x0):
+    return np.longdouble((F(x+dx)-F(x))/dx)
+
+def G(x):  #To funksjoner for tilnærmingen g fordi dette gjør det enklere å tegne grafen separert fra f'
+    return np.longdouble((F(x+0.28)-F(x))/0.28)#DeltaX hardkodet inn etter funn i Del1:Oppgave1D
+
+def F(x):
+    return np.sqrt(1+x**2)
+
+
+for x in np.arange(0.279,max-x0,0.000001):#Loop for å finne største gyldige DeltaX for E<=0.001. Loop grenser og stepsize funnet ved prøv&feil
+    Ex = abs(f(x0)-g(x))
+    if(Ex<=0.001):
+        valid=x
+        #print("F:{0}, G:{1}, f:{2}, E:{3}, x:{4}".format(F(x0+x),g(x),f(x0),Ex,x))#Fjern '#' tegnet foran denne linjen for å kjøre koden med printing av E og deltaX
+    elif(Ex>0.001):
+        break
+
+i=0
+E = [0]*1000
+for x in np.linspace(min,max,1000): #Loop for å beregne variasjon i E over et gitt intervall min -> max
+    E[i] = np.longdouble(abs(f(x)-g(x=x,dx=valid)))
+    i+=1
+
+
+fig = plt.gcf()
+fig.canvas.set_window_title('Funksjon 4: sqrt(1+x²)')
+x=np.linspace(min,max,1000)
+y=F(x)
+yd=f(x)
+yg=G(x)
+ye=E
+plt.grid(True)
+plt.plot(x,yd,'r-', label='f \'(x)')
+plt.plot(x,y,'g-',label="F (x)")
+plt.plot(x,yg,'b-',label="g (x)")
+plt.plot(x,ye,color='purple',label='E (x) for deltaX %.2f'%(valid))
+plt.legend()    
+plt.show()
+\end{lstlisting}
+
+\section{Del 2}
+\subsection{Oppgave 1}
+\begin{lstlisting}
+'''
+Denne koden tregner 1 input fra brukeren. Den trenger en startverdi på hvor
+man tror det ene nullpunktet er. Hvis startverdien er nærme nok til at det kommer innenfor feilmarginen
+før antall iterasjoner er nådd vil den si hvor nullpunktet er.
+
+Hvis man ikke skulle komme frem til nullpunktet innen antallet iterasjoner jeg har lagt inn i koden
+kan man i praksis øke dette tallet, men man har generelt valgt en dårlig start verdi om den skulle trenge
+flere itersajoner...
+'''
+
+def f(x):
+    return 3*x**2 + 4*x - 4
+
+def g(x):
+    return 6*x + 4
+
+def newtonRaphson(x0,e,I):
+    print('\nNewton Raphson metoden:')
+    step = 1
+    flag = 1
+    condition = True
+
+    while condition:
+        if(g(x0) == 0.0): # Hvis startverdien vi skriver inn gjør den deriverte lik 0 stopper koden, kan ikke dele på 0
+            print("kan ikke dele på 0")
+            break
+        
+        x1 = x0 - f(x0)/g(x0)
+        print('Iterasjon-%d, x1 = %0.12f og f(x1) = %0.12f' % (step, x1, f(x1)))
+        x0 = x1
+        step = step + 1
+
+        if step > I:
+            flag = 0
+            break
+
+        condition = abs(f(x1)) > e
+
+    if flag == 1:
+        print('\nDet ene nullpunktet er i: %0.12f' % x1)
+    else:
+        print("\nIkke konvergent.")
+
+x0 = input("Startverdi: ") #Startverdi
+e = 10**(-12) #max tillatte feilen
+I = 100 #Max antall iterasjoner
+
+x0 = float(x0)
+e = float(e)
+I = int(I) 
+
+newtonRaphson(x0,e,I)
+\end{lstlisting}
+
+\subsection{Oppgave 2a}
+\begin{lstlisting}
+'''
+Denne koden trenger 1 input fra brukeren. Den trenger en startverdi på hvor
+man tror det ene nullpunktet er som da er . Hvis startverdien er nærme nok til at det kommer innenfor feilmarginen
+før antall iterasjoner er nådd vil den si hvor nullpunktet er.
+
+Hvis man ikke skulle komme frem til nullpunktet innen antallet iterasjoner jeg har lagt inn i koden
+kan man i praksis øke dette tallet, men man har generelt valgt en dårlig start verdi om den skulle trenge
+flere itersajoner...
+
+Gode startverider er typisk verdier som er relativt nærme nullpunkter til grafen. 
+For denne grafen er gode startverdier f.eks.: "0" og "1"
+
+Siden denne grafen er en trigonometrisk funksjon fortsetter den ut i uendelighet, derfor kan vi også plusse på 2*pi*k
+der k er en integer, fordi det er nullpunkter i alle disse verdiene ut i uendeligheten.
+'''
+
+import math
+
+x0 = input("Startverdi: ") #Startverdi
+e = 10**(-12) #Max tillatte feilen
+I = 100 #Max antall iterasjonerr
+
+x0 = float(x0)
+e = float(e)
+I = int(I)
+
+x = x0
+cos = math.cos
+sin = math.sin
+
+def f(x):
+    return (10 - (2 + 8.5*cos(x)))**2 + (6 - (8.5*sin(x)))**2 - 49
+
+def g(x):
+    return -102*cos(x) + 136*sin(x)
+
+def newtonRaphson(x0,e,I):
+    print('\nNewton Raphson metoden:')
+    step = 1
+    flag = 1
+    condition = True
+
+    while condition:
+        if(g(x0) == 0.0): # Hvis startverdien vi skriver inn gjør den deriverte lik 0 stopper koden, kan ikke dele på 0
+            print("kan ikke dele på 0")
+            break
+        
+        x1 = x0 - f(x0)/g(x0)
+        print('Iterasjon-%d, x1 = %0.12f og f(x1) = %0.12f' % (step, x1, f(x1)))
+        x0 = x1
+        step= step + 1
+
+        if step > I:
+            flag = 0
+            break
+
+        condition = abs(f(x1)) > e
+
+    if flag == 1:
+        print('\nDet ene nullpunktet er i: %0.12f' % x1)
+    else:
+        print("\nIkke konvergent.")
+
+newtonRaphson(x0,e,I)
+\end{lstlisting}
+
+\subsection{Oppgave 2b}
+\begin{lstlisting}
+'''
+Denne koden tregner 1 input fra brukeren. Den trenger en startverdi på hvor
+man tror det ene nullpunktet er. Hvis startverdien er nærme nok til at det kommer innenfor feilmarginen
+før antall iterasjoner er nådd vil den si hvor nullpunktet er.
+
+Hvis man ikke skulle komme frem til nullpunktet innen antallet iterasjoner jeg har lagt inn i koden
+kan man i praksis øke dette tallet, men man har generelt valgt en dårlig start verdi om den skulle trenge
+flere itersajoner...
+
+Gode startverider er typisk verdier som er relativt nærme nullpunkter til grafen. 
+For denne grafen er gode startverdier f.eks.: "0" og "1"
+
+Siden denne grafen er en trigonometrisk funksjon fortsetter den ut i uendelighet, derfor kan vi også plusse på 2*pi*k
+der k er en integer, fordi det er nullpunkter i alle disse verdiene ut i uendeligheten.
+'''
+
+import math
+
+x0 = input("Startverdi: ") #Startverdi
+e = 10**(-12) #Max tillatte feilen
+I = 100 #Max antall iterasjoner
+
+x0 = float(x0)
+e = float(e)
+I = int(I)
+
+x = x0
+cos = math.cos
+sin = math.sin
+
+def f(x):
+    return (10 - (8.5*cos(x)))**2 + (6 - (2 + 8.5*sin(x)))**2 - 49
+
+def g(x):
+    return -68*cos(x) + 170*sin(x)
+
+def newtonRaphson(x0,e,I):
+    print('\nNewton Raphson metoden:')
+    step = 1
+    flag = 1
+    condition = True
+
+    while condition:
+        if(g(x0) == 0.0): # Hvis startverdien vi skriver inn gjør den deriverte lik 0 stopper koden, kan ikke dele på 0
+            print("kan ikke dele på 0")
+            break
+        
+        x1 = x0 - f(x0)/g(x0)
+        print('Iterasjon-%d, x1 = %0.12f og f(x1) = %0.12f' % (step, x1, f(x1)))
+        x0 = x1
+        step = step + 1
+
+        if step > I:
+            flag = 0
+            break
+
+        condition = abs(f(x1)) > e
+
+    if flag == 1:
+        print('\nDet ene nullpunktet er i: %0.12f' % x1)
+    else:
+        print("\nIkke konvergent.")
+
+newtonRaphson(x0,e,I)
+\end{lstlisting}
+
+\subsection{Oppgave 2c}
+\begin{lstlisting}
+'''
+Denne koden tregner 1 input fra brukeren. Den trenger en startverdi på hvor
+man tror det ene nullpunktet er. Hvis startverdien er nærme nok til at det kommer innenfor feilmarginen
+før antall iterasjoner er nådd vil den si hvor nullpunktet er.
+
+Hvis man ikke skulle komme frem til nullpunktet innen antallet iterasjoner jeg har lagt inn i koden
+kan man i praksis øke dette tallet, men man har generelt valgt en dårlig start verdi om den skulle trenge
+flere itersajoner...
+
+Gode startverider er typisk verdier som er relativt nærme nullpunkter til grafen. 
+For denne grafen er gode startverdier f.eks.: "0" og "1"
+
+Siden denne grafen er en trigonometrisk funksjon fortsetter den ut i uendelighet, derfor kan vi også plusse på 2*pi*k
+der k er en integer, fordi det er nullpunkter i alle disse verdiene ut i uendeligheten.
+'''
+
+import math
+
+x0 = input("Startverdi: ") #Startverdi
+e = 10**(-12) #Max tillatte feilen
+I = 100 #Max antall iterasjoner
+
+x0 = float(x0)
+e = float(e)
+I = int(I)
+
+x = x0
+cos = math.cos
+sin = math.sin
+
+def f(x):
+    return (10 - (-2 + 8.5*cos(x)))**2 + (6 - (8.5*sin(x)))**2 - 49
+
+def g(x):
+    return -102*cos(x) + 204*sin(x)
+
+def newtonRaphson(x0,e,I):
+    print('\nNewton Raphson metoden:')
+    step = 1
+    flag = 1
+    condition = True
+
+    while condition:
+        if(g(x0) == 0.0): # Hvis startverdien vi skriver inn gjør den deriverte lik 0 stopper koden, kan ikke dele på 0
+            print("kan ikke dele på 0")
+            break
+        
+        x1 = x0 - f(x0)/g(x0)
+        print('Iterasjon-%d, x1 = %0.12f og f(x1) = %0.12f' % (step, x1, f(x1)))
+        x0 = x1
+        step = step + 1
+
+        if step > I:
+            flag = 0
+            break
+
+        condition = abs(f(x1)) > e
+
+    if flag == 1:
+        print('\nDet ene nullpunktet er i: %0.12f' % x1)
+    else:
+        print("\nIkke konvergent.")
+
+newtonRaphson(x0,e,I)
+\end{lstlisting}
